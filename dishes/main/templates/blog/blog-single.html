@@ -1,0 +1,60 @@
+
+{% extends 'index.html' %}
+{% block link %}  {{ content.keywords }} {% endblock %}
+{% block title %}בלוג{% endblock %}
+{% load static  %}
+
+{% block content %}
+ 
+
+<section class="space-pb o-hidden position-relative">
+  <div class="container">
+    <div class="row no-gutters" dir="rtl">
+      <div >
+        <div class="blog-post">
+          <div class="blog-content px-0 pb-0">            
+            <div class="popup-video my-4">
+              <img class="img-fluid" src="{{ MEDIA_URL }}{% if content.image_1 %}{{ content.image_1.url }}{% endif %}" alt="">
+            </div>
+            <h3 class="mt-5" dir="rtl"></h3>
+            
+            <div dir="rtl">{{content.entry_1}}</div>
+            {% if content.name_entry_2 %}
+            <div class="blog-post mb-4">
+              <div class="blog-content ps-0 pe-0">
+                <div class="row">
+                  <h3 class="mt-5" dir="rtl">{{content.name_entry_2}}</h3>
+                  <div class="col-lg-7">
+       
+                    <p class="my-4 d-flex align-items-center">{{content.entry_2}}</p>
+                  </div>
+                  <div class="col-lg-5">
+                    <img class="img-fluid" src="{{ MEDIA_URL }}{% if content.image_2 %}{{ content.image_2.url }}{% endif %}" alt="{{content.name_entry_2}}">
+                  </div>
+                </div>
+              </div>    
+            </div>
+            {% endif %}
+
+            {% if content.entry_in_block %}
+            <blockquote class="blockquote">
+              <p>{{content.entry_in_block}}</p>
+            </blockquote>
+          {% endif %}
+           
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</section>
+ {% endblock content %}
+
+ {% block js %}
+
+  <script src=" static/js/jquery-3.5.1.min.js"></script>
+  <script src=" static/js/popper/popper.min.js"></script>
+  <script src=" static/js/bootstrap/bootstrap.min.js"></script>
+
+{% endblock js  %}

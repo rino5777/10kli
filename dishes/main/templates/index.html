@@ -1,0 +1,267 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content='{% block link %} {% endblock %}'>
+    <meta name="author" content="potenzaglobalsolutions.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>{% block title %} {% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon10.ico' %}" />
+                      
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap">
+
+    <!-- CSS Global Compulsory (Do not remove)-->
+    <link rel="stylesheet" href="{% static 'css/font-awesome/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}" />
+    
+
+    <!-- Page CSS Implementing Plugins (Remove the plugin CSS here if site does not use that feature)-->
+    <link rel="stylesheet" href="{% static 'css/select2/select2.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/owl-carousel/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/swiper/swiper.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/animate/animate.min.css' %}"/>
+<!-- Page CSS Implementing Plugins (Remove the plugin CSS here if site does not use that feature)-->
+
+    <link rel="stylesheet" href="{% static 'css/range-slider/ion.rangeSlider.min.css' %}" />
+
+    <!-- Template Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+  </head>
+  {% block style %}
+
+{% endblock style %}
+<body>
+
+<!--=================================
+header -->
+<header class="header header-center default bg-dark">
+  <div class="container">
+   <div class="topbar bg-dark">
+    <div class="row">
+      <div class="col-md-5 d-flex align-items-center">
+        <div class="social">
+          <ul class="list-unstyled">
+            <li><a href="https://www.facebook.com/10kli"> <i class="fab fa-facebook-f"></i> </a></li>
+            <li><a href="https://twitter.com/@10kli_israel"> <i class="fab fa-twitter"></i> </a></li>
+            <li><a href="https://www.pinterest.com/10kli"> <i class="fab fa-pinterest-p"></i> </a></li>
+            <li><a href=" https://www.instagram.com/10kli.israel"> <i class="fab fa-instagram"></i> </a></li>
+
+            <li><a href="tel: 0587003011 "> <i class="fa fa-phone"></i> </a></li>
+            <li><a href="https://wa.me/972587003011"> <i class="fab fa-whatsapp"></i> </a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2 text-center">
+        <a  href="{% url 'main:main_page' %}"><img class="img-fluid logo" src="{% static 'images/logo10.png' %}" alt="logo"></a>
+      </div>
+      <div class="col-md-5 d-flex justify-content-end">
+       
+        <div class="search">
+      <ul class="pl-0">
+            <li class="dropdown nav-item header-search">
+             
+              <div class="form-outline">
+                <form method = 'POST' action="{% url 'main:search' %}">
+                  {% csrf_token %}
+                <input type="search" id="form1" class="form-control" placeholder="חיפוש"
+                aria-label="Search"  name = 'searche' dir="rtl" />
+              </form>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+
+<!---
+
+               <div class="search-box" >
+                
+            <button class="btn-search"><i class="fas fa-search"></i></button>
+             <form method="POST" action="{% url 'main:search' %}">
+              {% csrf_token %}
+                 <input type="text" class="input-search" placeholder="Type to Search...">
+
+             </form>
+               
+               </div>-->
+             
+          
+         
+         </div>
+      </div>
+      </div>
+     <div class="row justify-content-center">
+      <div class="col-md-12 text-center">
+       <nav class="navbar navbar-static-top navbar-expand-lg header-sticky justify-content-center">
+
+         <a class="navbar-brand" href="{% url 'main:main_page' %}"><img class="img-fluid logo" src="{% static 'images/logo10.png' %}" alt="logo"></a>
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmenu" aria-controls="navbarmenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-align-left"></i>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarmenu">
+            <ul class="nav navbar-nav">
+              <li class="dropdown nav-item">
+                <a  class="nav-item"><a class="nav-link" href="{% url 'main:main_page' %}" >עמוד הבית
+                </a>
+                
+              </li>
+              <li class="dropdown nav-item">
+                <a href="{% url 'catalog:catalog' %}" class="nav-link">קטלוג
+                </a></li>
+      <li class="nav-item dropdown">
+        <a href="{% url 'blog:posts_line' %}" class="nav-link">בלוג
+        </a>
+       
+      </li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'main:about_us' %}">אודותינו
+      </a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'main:contact' %}">צור קשר
+      </a></li>
+    </ul>
+    
+      {% with len_items=cart|length %}
+          {% if   cart|length > 0 %}
+
+      <a class="dropdown nav-item" href="{% url 'cart:scart' %}">
+        <i class="fa fa-shopping-cart fa-lg" aria-hidden="true" ></i>
+
+        {{len_items}} 
+         </a>
+          {% else %}
+          <a class="dropdown nav-item" href="{% url 'cart:scart' %}">
+              <i class="fa fa-shopping-cart fa-lg" aria-hidden="true" ></i></a>
+          {% endif %}
+          {% endwith %}
+   
+  </div>
+</nav>
+ </div>
+ </div>
+</div>
+</header>
+
+
+
+
+
+
+
+
+<!--=================================
+ Search -->
+ 
+<!--=================================
+ Search -->
+
+  {% block content %}
+
+  
+  {% endblock content %}
+
+<footer class="footer space-ptb bg-dark">
+  <div class="container">
+    <div class="row pb-2">
+      <div class="col-md-4">
+        <div class="footer-useful-List">
+          <ul class="list-unstyled mb-0" dir="rtl">
+            <li><a href="">תקנון אתר
+            </a></li>
+            <li><a href="">מדיניות פרטיות</a></li>
+           
+          </ul>
+        </div>
+      </div>
+        <div class="col-md-4 text-left text-md-center">
+        
+        </div>
+      <div class="col-md-4 mt-4 mt-md-0 text-left text-md-end">
+        <div class="footer-useful-List">
+          <ul class="list-unstyled mb-0">
+            <li><a href="">:פרטי התקשרות
+            </a></li>
+            <li><a href="tel: 0587003011 ">טל: 0587003011</a></li>
+            <li><a href="mailto: 10kli.israel@gmail.com"> 10kli.israel@gmail.com :מייל</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row pb-5">
+      <div class="col-lg-4">
+      </div>
+    
+    </div>
+   
+
+
+    <div class="footer-bottom mt-0">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-5 text-center text-md-left my-2 my-md-0">
+          <p class="mb-0 text-white"> &copy;Copyright <span id="copyright"> <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script></span> <a href="#" class="text-white"> 10kli </a> All Rights Reserved </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--=================================
+footer-->
+
+<!--=================================
+Back To Top-->
+
+ <div id="back-to-top" class="back-to-top">
+  <a href="#"> <i class="fas fa-angle-up"></i></a>
+ </div>
+
+<!--=================================
+Back To Top-->
+
+<!--=================================
+Javascript -->
+{% block js %}
+
+<!-- JS Global Compulsory (Do not remove) форма не рабтает из за js тут    -->
+  
+
+{% endblock js  %}
+  <!-- JS Global Compulsory (Do not remove) форма не рабтает из за js тут    -->
+  <!--<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>-->
+  <!--<script src="{% static 'js/popper/popper.min.js' %}"></script>-->
+  <!--<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>-->
+
+  <!-- Page JS Implementing Plugins (Remove the plugin script here if site does not use that feature)-->
+  <script src="{% static 'js/jquery.appear.js' %}"></script>
+  <script src="{% static 'js/counter/jquery.countTo.js' %}"></script>
+  <script src="{% static 'js/select2/select2.full.js' %}"></script>
+  <script src="{% static 'js/owl-carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/swiper/swiper.min.js' %}"></script>
+  <script src="{% static 'js/swiperanimation/SwiperAnimation.min.js' %}"></script>
+  <script src="{% static 'js/instagramFeed/jquery.instagramFeed.min.js' %}"></script>
+  <script src="{% static 'js/jarallax/jarallax.min.js' %}"></script>
+  <script src="{% static 'js/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+  <!-- Template Scripts (Do not remove)-->
+  <script src="{% static 'static/js/custom.js' %}"></script>
+
+
+
+
+
+<!-- Page JS Implementing Plugins (Remove the plugin script here if site does not use that feature)-->
+
+<script src="{% static 'js/range-slider/ion.rangeSlider.min.js' %}"></script>
+<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+
+<!-- Template Scripts (Do not remove)-->
+<script src="{% static 'js/custom.js' %}"></script>
+
+
+
+
+</body>
+</html>

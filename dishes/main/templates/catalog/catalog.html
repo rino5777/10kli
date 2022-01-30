@@ -1,0 +1,173 @@
+{% extends 'index.html' %}
+{% block link %} {{words.catalog_adv}} {% endblock %}
+{% load static %}
+{% block title %}קטלוג{% endblock %}
+{% block content %}
+<!--=================================
+header -->
+
+<!--=================================
+ header -->
+
+ <!--=================================
+ Search -->
+
+
+
+<!--=================================
+ Search -->
+
+
+<!--=================================
+product -->
+<section class="space-ptb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <h6 class="widget-title" align="right">תת קטגוריות </h6>
+
+        <div class="blog-sidebar-post-divider">
+        </div>
+       
+
+
+       
+        
+
+
+
+
+
+        <div class="row mt-4">
+       
+            {% for a in subcategories %}
+
+          <div class="col-md-6 col-lg-4 col-sm-6 mb-5">
+            <div class="product">
+              <div class="product-image">
+                <a href="{{ a.get_absolute_url }}"><img class="img-fluid mx-auto" src="{{ MEDIA_URL }}{% if a.image %}{{ a.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt=""></a>
+                <div class="product-overlay">
+               <!---  <div class="add-to-cart">
+                    <a href="{{a.get_absolute_url}}"> <span> Перейти </span> </a>
+                  </div>--->
+                </div>
+              </div>
+              <div class="product-description">
+                <div class="product-title">
+                  <a href="{{a.get_absolute_url}}">{{ a.name }}</a>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+            {% endfor %}
+
+
+
+          
+          
+          
+          
+        </div>
+      </div>
+      <div class="col-lg-4 mt-5 mt-lg-0">
+        <div class="bg-white sidebar border blog-sidebar shop-sidebar">
+          <div class="widget">
+            <h6  align="right">קטגוריה
+            </h6>
+            <div class="blog-sidebar-post-divider">
+            </div>
+            <div class="widget-content mt-4">
+              <ul class="list-unstyled list-style mb-0">
+                 
+                <li>
+                    <div class="blog-post blog-overlay blog-post-05">
+                        <div class="blog-image">
+                           <img class="img-fluid" src="static/images/blog/09.png" alt="">
+                        </div>
+                        <div class="blog-name">
+                         <a href="{% url 'catalog:catalog' %}" dir="rtl"><span class="ms-auto" style='margin-right: 15px;' >כל הקטגוריות</span></a>
+                       </div>
+                     </div>
+
+                    {% for i in elements_main %}
+                  <div class="blog-post blog-overlay blog-post-05">
+                     <div class="blog-image">
+                        <img class="img-fluid"  src="static/images/blog/09.png" alt="">
+                     </div>
+                     
+                     <div class="blog-name" >
+                      <div>
+                      <a href="{{i.get_absolute_url}}"  dir="rtl"  ><span class="ms-auto" style='margin-right: 15px;' >{{i.name}}</span></a>
+                    </div>
+                    </div>
+                  </div>
+                    {% endfor %}
+                </li>
+
+                
+              </ul>
+            </div>
+
+          </div>
+          
+
+         
+          
+           
+
+
+          <div class="widget">
+              <h6 class="widget-title" dir="rtl">עקבו אחרינו</h6>
+            <div class="blog-sidebar-post-divider">
+              </div>
+              <div class="widget-content mt-4">
+                <div class="social">
+                  <ul class="list-unstyled">
+                    <li class="facebook">
+                        <a href="https://www.facebook.com/10kli"> <i class="fab fa-facebook-f me-3"></i>Facebook</a>
+                            <a class="follow ms-auto" href="https://www.facebook.com/plugins/error/confirm/like?iframe_referer=&kid_directed_site=false&secure=true&plugin=like&return_params=%7B%22href%22%3A%22https%3A%2F%2Fwww.facebook.com%2Ffingerfoodisrael%2F%22%2C%22width%22%3A%2260%22%2C%22layout%22%3A%22button%22%2C%22action%22%3A%22like%22%2C%22size%22%3A%22small%22%2C%22share%22%3A%22false%22%2C%22height%22%3A%2265%22%2C%22appId%22%3Anull%2C%22ret%22%3A%22sentry%22%2C%22act%22%3A%22like%22%7D" target="_blank">Like </a>
+                      </li>
+
+                    <li class="instagram">
+                      <a href="https://www.instagram.com/10kli.israel"> <i class="fab fa-instagram me-3"></i>instagram</a>
+                      
+                    </li>
+
+                    <li class="pinterest" >
+                      <a href="https://www.pinterest.com/10kli"> <i class="fab fa-pinterest me-3"></i>pinterest</a>
+                      
+                    </li>
+
+                    <li class="youtube">
+                      <a href="https://www.youtube.com/channel/UCRSslFCOjaM1SJvX1-XJKFQ"> <i class="fab fa-youtube me-3"></i>youtube</a>
+                     
+                    </li>
+
+                    <li class="twitter">
+                      <a href="https://twitter.com/@10kli_israel"> <i class="fab fa-twitter me-3"></i>twitter</a>
+                      
+                    </li>
+                    
+                  </ul>
+                </div>
+              </div>
+          </div>
+          
+
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+<!--=================================
+product -->
+
+<!--=================================
+footer-->
+
+<!--=================================
+footer-->
+
+{% endblock content %}

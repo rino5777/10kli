@@ -1,0 +1,217 @@
+
+{% extends 'index.html' %}
+{% block title %}הזמנה{% endblock %}
+
+{% block style %}
+<style>
+ 
+.alert {
+  padding: 20px;
+  background-color: #ad9363;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+  </style>
+{% endblock style %}
+
+{% block content %}
+
+
+
+
+<!--=================================
+Checkout -->
+
+
+
+
+
+
+<section class="space-ptb">
+  <div class="container">
+   
+    <div class="row">
+
+
+      <!-- {% if messages %}       
+      {% for message in messages %}
+
+
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+         {{ message }}
+      </div>
+
+
+
+      
+      {% endfor %}            
+      {% endif %} -->
+
+
+      <div class="col-md-6">
+        <div class="checkout">
+          <div class="section-title mb-4 mb-md-5">
+
+
+
+            
+
+
+
+
+
+
+            <h3 class="title" dir="rtl">פרטים נוספים</h3>
+           
+          </div>
+          <form class="form-row mt-4" method="POST">
+            {% csrf_token %}
+            <div class="form-group col-sm-12">
+              {{form_order.first_name}}
+            </div>
+            <div class="form-group col-sm-12">
+              {{form_order.last_name}}
+            </div>
+            <div class="form-group col-sm-12">
+              {{form_order.company_name}}
+            </div>
+            <div class="form-group col-sm-12">
+              {{form_order.address}}
+            </div>
+            <div class="form-group col-sm-12">
+              {{form_order.telephone}}
+            </div>          
+            <div class="form-group col-sm-12">
+              {{form_order.city}}
+            </div>            
+            <div class="form-group col-sm-12">
+              {{form_order.email}}
+            </div>
+            <div class="form-group col-sm-12 ">
+              {{form_order.note}}
+            </div> 
+            <div class="d-grid"> 
+              <button type="submit" class="btn btn-primary btn-sm">
+                שלח
+                </button>
+          </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6 mt-5 mt-md-0">
+        <div class="section-title mb-4 mb-md-5">
+          <h3 class="title" dir="rtl">פרטי הזמנה</h3>
+        </div>
+        <div class="checkout-review">
+          <div class="table-responsive">
+            <table class="table cart">
+              <tbody>
+                <tr>                
+                  <th class="product-thumbnail" style = ' width:30%; height: 30%; ' ></th>
+                  <th class="border-top-0 product-name" scope="row">מוצר</th>
+                  
+                  <th class="border-top-2 product-total" scope="row" style = ' margin-left: 5px;' > כמות</th>
+                 
+                  <th class="product-remove">&nbsp;</th>
+                </tr>
+                {% for i in cart %}
+                        {% with product=i.product %}
+                       
+                <tr>                 
+                  <td class="product-thumbnail"><a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" style = ' width:30%; height: 30%; ' alt=""></a></td>
+                  <td class="product-name"><a href="{{ product.get_absolute_url }}">{{product.name}}</a></td> 
+                  <td class='product-to'>{{ i.quantility }}</td>               
+                  <td class="product-total">
+                   
+                    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                      {% csrf_token %}
+                  
+                      <div class="row">
+                        
+                        <div class="col">
+                            {{ cart_form_2.quantility }}
+                          
+                    
+                  </div>
+  
+                 
+                  <div class="col-sm">
+                  <input class="btn btn-primary btn-md mt-2 mt-sm-0" type="submit" value = 'לשדרג'> </input>
+                  
+                  
+                  </div>
+                      </div>
+
+                  <!-- <span  >
+                      {{ cart_form_2.quantility }}
+                  
+                  <input type="hidden" name="overwrite_qty" value="True">
+                  <div class="input-group-append">
+                  <button type="submit" 
+                  data-toggle="tooltip" data-placement="top"
+                  title="Update">
+                  <i >+</i>
+                  </button>
+                  </div>
+                  </span> -->
+                  </form>
+                  
+                  
+                    
+                  
+                  
+                  
+                </td>
+                <td class="product-remove"><a href="{% url 'cart:cart_remove' product.id %}"><i class="far fa-trash-alt"></i></a></td>
+                </tr>
+                {% endwith %}
+                {% empty %}
+                <tr>
+                  <td colspan="3" dir="rtl"><span class="text-center font-weight-bold text-muted lead" >
+                    הסל שלך ריק בינתיים
+                  </span></td>        
+                </td>         
+                </tr>     
+                {% endfor %}
+              </tbody>
+              <tfoot>
+              <tr>
+              </tr>
+              </tfoot>
+            </table>     
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--=================================
+Checkout -->
+
+
+
+
+
+
+{% endblock  %}
+
+
+
+
+

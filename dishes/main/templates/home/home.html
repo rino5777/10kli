@@ -1,0 +1,91 @@
+{% extends 'index.html' %}
+
+{% block link %} {{words.main_adv}} {% endblock %}
+
+{% block title %}עמוד הבית{% endblock %}
+
+{% block content %}
+
+
+
+<section class="banner p-0">
+  <div class="container-fluid p-0">
+   <div class="row g-0">
+    <div class="col-md-12">
+     <div class="owl-carousel blog-arrow" data-nav-arrow="true" data-items="2" data-md-items="2" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="0">
+      
+          
+        {% for i in content %}
+      <div class="item">
+        <div class="blog-post blog-overlay">
+          <div class="blog-image">
+            <img class="img-fluid" src="{{ MEDIA_URL }}{% if i.image_1 %}{{ i.image_1.url }}{% elif i.image_2 %}{{ i.image_2.url }}{% endif %}" alt="">
+          </div>
+          <div class="blog-name text-center p-3">
+           
+            <a href="{{i.get_absolute_url}}"><h1 class="text-white" data-swiper-animation="fadeInUp" data-duration="2.0s" data-delay="1.5s">{{i.name_entry_2}}</h1></a>
+            <div class="blog-post-footer blog-post-categorise pb-0">
+              <div class="blog-post-author" data-swiper-animation="fadeInUp" data-duration="2.0s" data-delay="1.5s">
+                <span>By {{i.autor}}</span>
+              </div>
+              <div class="blog-post-time" data-swiper-animation="fadeInUp" data-duration="2.0s" data-delay="1.5s">
+                <a href="#"><i class="far fa-clock"></i>{{i.datetime}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+ {% endfor %}
+
+     
+   </div>
+  </div>
+ </div>
+</div>
+</section>
+
+ 
+<section class="space-ptb bg-dark">
+  <div class="container">
+    
+    <div class="row">
+      {% for i in elements %}
+      <div class="col-lg-4">
+          <!--карточка горизонт -->
+         
+
+        <!-- <div class="blog-post blog-overlay mb-4"> -->
+          
+          <div class="blog-image">
+            <a href="{{ i.get_absolute_url }}"><img class="img-fluid mx-auto" src="{{ i.image.url }}" alt=""></a>
+          </div>
+          <div class="blog-name text-center px-2">
+            <!--<a class="btn btn-outline-light mb-3 tag" href="{{ i.get_absolute_url }}">Перейти</a>-->
+            <h6 class="text-white"><a href="{{ i.get_absolute_url }}">{{i.name}}</a></h6>
+            <div class="blog-post-footer blog-post-categorise p-0">
+              
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+        {% endfor %} 
+    </div>
+  </div>
+</section>
+
+ 
+
+
+
+{% endblock  %}
+
+
+{% block js %}
+
+<!-- JS Global Compulsory (Do not remove) форма не рабтает из за js тут    -->
+  <!-- <script src=" static/js/jquery-3.5.1.min.js"></script> -->
+  <!-- <script src=" static/js/popper/popper.min.js"></script> -->
+  <!-- <script src=" static/js/bootstrap/bootstrap.min.js"></script> -->
+
+{% endblock js  %}

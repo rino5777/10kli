@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+
+{% block link %}{{words.contact_adv }} {% endblock %}
+{% block title %}צור קשר{% endblock %}
+{% load static %}
+{% block content %}
+
+
+
+<!--=================================
+Contact us-->
+<section class="space-ptb">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-9">
+        <h5>לפרטים נוספים, הצעות מחיר, ייעוץ ואירועים<br> מלאו את הפרטים מטה ונחזור אליכם בהקדם</h5>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center text-center mt-5" >
+
+      
+      <div class="col-lg-6">
+
+        
+        <form method="POST" enctype="multipart/form-data" action = "" >
+          {% csrf_token %}
+          {{ error }}
+          <div class="mb-3 ">
+            {{order_form.first_name}}
+          </div>
+          <div class="mb-3">
+            {{order_form.email}}
+   
+          </div>
+
+          <div class="mb-3">
+            {{order_form.telephone}}
+   
+          </div>
+          <div class="mb-3">
+
+            {{order_form.address}}
+          </div>
+          <div class="mb-3">
+           
+            {{order_form.note}}
+          </div>
+         
+          {% csrf_token %}
+            <button type="submit" class="btn btn-primary" value='Submit' >שלח</button>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--=================================
+Contact us-->
+
+{% endblock %}

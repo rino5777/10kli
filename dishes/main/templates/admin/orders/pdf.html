@@ -1,0 +1,61 @@
+<html>
+<body>
+<div>
+<span class="h3 font-weight-bold muted">
+finesauces.store
+</span>
+<span class="float-right font-weight-bold">
+Order #{{ order.id }}
+</span>
+</div>
+<div class="mt-3">
+Created: {{ order.created|date }}
+</div>
+<hr>
+<div id="container">
+<div class="item mt-2">
+<div class="font-weight-bold">
+Manufacturer
+</div>
+E-mail: 10kli.israel@gmail.com<br>
+
+Telephone: 053 _______<br>
+</div>
+<div class="item mt-2">
+<div class="font-weight-bold">
+Customer
+</div>
+{{ order.first_name }} {{ order.last_name }}<br>
+{{ order.address }}<br>
+{{ order.postal_code }}, {{ order.city }}
+</div>
+</div>
+<hr>
+<h3>Your order:</h3>
+<table class="table mt-3">
+<thead>
+<tr>
+<th>Product</th>
+
+<th class="text-right">Quantity</th>
+<th class="text-right"></th>
+</tr>
+</thead>
+<tbody>
+{% for item in order.items.all %}
+<tr>
+<td>{{ item.product.name }}</td>
+
+<td class="num text-right">{{ item.quantity }}x</td>
+<td class="num text-right"></td>
+</tr>
+{% endfor %}
+
+
+
+
+
+</tbody>
+</table>
+</body>
+</html>

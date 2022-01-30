@@ -1,0 +1,77 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}
+  Order  
+{% endblock %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+    <a href="{% url "admin:index" %}">Home</a> &rsaquo;
+   
+   
+  </div>
+{% endblock %}
+
+{% block content %}
+<h1>Order </h1>
+<ul class="object-tools">
+  <li>
+    <a href="#" onclick="window.print();">Print order</a>
+  </li>
+</ul>
+<table>
+  <tr>
+    <th>Created</th>
+    <td>{{ order.created }}</td>
+  </tr>
+  <tr>
+    <th>Customer</th>
+    <td>{{ order.first_name }} {{ order.last_name }}</td>
+  </tr>
+  <tr>
+    <th>E-mail</th>
+    <td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
+  </tr>
+  <tr>
+    <th>telephone</th>
+    <td>{{ order.telephone }}</td>
+  </tr>
+ 
+  <tr>
+    <th>Address</th>
+    <td>{{ order.address }},  {{ order.city }}</td>
+  </tr>
+
+  <tr>
+    <th>note</th>
+    <td>{{ order.note }}</td>
+  </tr>
+ 
+ 
+</table>
+
+<div class="module">
+  <h2>Items bought</h2>
+  <table style="width:100%">
+    <thead>
+      <tr>
+        <th>Product</th>
+       
+        <th>Quantity</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in order.items.all %}
+        <tr class="row{% cycle "1" "2" %}">
+          <td>{{ item.product.name }}</td>
+         
+          <td class="num">{{ item.quantity }}</td>
+         
+        </tr>
+      {% endfor %}
+     
+    </tbody>
+  </table>
+</div>
+{% endblock %}
