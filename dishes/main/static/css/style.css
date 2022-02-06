@@ -57,6 +57,12 @@ NOTE: This is main stylesheet of template, This file contains the styling for th
 /*****************************
     Typography
 *****************************/
+
+
+
+
+
+
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -5023,3 +5029,4 @@ input[type="radio"]:radio {
     margin-top: 5px; } }
 
 /*# sourceMappingURL=../css/style.css.map */
+
