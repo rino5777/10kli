@@ -3712,7 +3712,7 @@ input[type="radio"]:radio {
     margin-left: auto; }
 
 .cart-table .table td.product-thumbnail img {
-  width: 70px;
+  width: auto;
   height: auto; }
 
 .cart-totals {

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [
@@ -142,7 +143,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CART_SESSION_ID = 'cart'
 #CART_ID = 'cart'
 
-broker_url = 'redis://localhost:6379/0'
+broker_url = 'django://'
 celery_result_backend = 'redis://localhost:6379/0'
 task_send_sent_event = False
 #CELERY_BROKER_URL =  'redis://http://localhost:15672/'
